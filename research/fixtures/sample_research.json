@@ -1,0 +1,49 @@
+[
+  {
+    "model": "research.repository",
+    "pk": 1,
+    "fields": {
+      "identifier": "https://github.com/example/demo-repo",
+      "display_name": "demo-repo",
+      "last_analyzed_at": "2026-05-01T12:00:00Z"
+    }
+  },
+  {
+    "model": "research.researchsession",
+    "pk": 1,
+    "fields": {
+      "repository": 1,
+      "question": "Where is configuration loaded?",
+      "final_answer": "This is sample fixture data. Run a live session to populate real answers.",
+      "references_json": [{"file": "README.md", "start_line": 1, "end_line": 10, "note": "example"}],
+      "status": "completed",
+      "error_message": "",
+      "checkout_path": "",
+      "input_tokens": 100,
+      "output_tokens": 200,
+      "created_at": "2026-05-01T11:55:00Z",
+      "updated_at": "2026-05-01T12:00:00Z"
+    }
+  },
+  {
+    "model": "research.finding",
+    "pk": 1,
+    "fields": {
+      "session": 1,
+      "file_path": "README.md",
+      "note": "Sample finding from fixture.",
+      "created_at": "2026-05-01T11:58:00Z"
+    }
+  },
+  {
+    "model": "research.toolcalllog",
+    "pk": 1,
+    "fields": {
+      "session": 1,
+      "tool_name": "list_files",
+      "arguments": {"path": "."},
+      "result_excerpt": "{\"entries\": []}",
+      "created_at": "2026-05-01T11:56:00Z"
+    }
+  }
+]

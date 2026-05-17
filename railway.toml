@@ -1,0 +1,21 @@
+[build]
+builder = "nixpacks"
+buildCommand = "pip install -r requirements.txt"
+
+[deploy]
+startCommand = "gunicorn config.wsgi --bind 0.0.0.0:$PORT --workers 2 --timeout 120"
+healthcheckPath = "/"
+healthcheckTimeout = 300
+restartPolicyType = "on_failure"
+restartPolicyMaxRetries = 3
+
+[[deploy.preDeployCommands]]
+command = "python manage.py migrate --no-input"
+
+[[deploy.preDeployCommands]]
+command = "python manage.py collectstatic --no-input --clear"
+
+[deploy.envVars]
+CORS_ALLOWED_ORIGINS = "https://django-postgre-sql-nextjs-ai-resear.vercel.app/"
+DJANGO_ALLOWED_HOSTS = "*"
+DJANGO_DEBUG = "false"

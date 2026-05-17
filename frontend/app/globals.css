@@ -1,0 +1,56 @@
+@import "tailwindcss";
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+
+  /* Semantic tokens used by sessions/new page */
+  --border: #e4e4e7;
+  --card: #ffffff;
+  --primary: #18181b;
+  --muted-foreground: #71717a;
+  --muted: #f4f4f5;
+  --success: #16a34a;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+
+  --color-border: var(--border);
+  --color-card: var(--card);
+  --color-primary: var(--primary);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-success: var(--success);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+    --border: #27272a;
+    --card: #09090b;
+    --primary: #a1a1aa;
+    --muted-foreground: #a1a1aa;
+    --muted: #18181b;
+    --success: #22c55e;
+  }
+}
+
+body {
+  font-family: var(--font-geist-sans), system-ui, sans-serif;
+  background: var(--background);
+  color: var(--foreground);
+}
+
+/* Shimmer animation used by sessions/new page */
+@keyframes shimmer {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
+}
+.text-shimmer {
+  animation: shimmer 1.6s ease-in-out infinite;
+}
